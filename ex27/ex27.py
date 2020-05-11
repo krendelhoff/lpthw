@@ -1,0 +1,1 @@
+print("Learned boolean algebra")
