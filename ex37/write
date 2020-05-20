@@ -1,0 +1,40 @@
+#!/usr/local/bin/python3
+import csv
+from sys import argv, exit
+from os.path import exists
+
+global prompt
+prompt = "> "
+
+def write(filename):
+    with open(filename, "a") as csvfile:
+        print("Enter the number of columns.")
+        num = input(prompt)
+        if num.isdigit():
+            while True:
+                writer = csv.writer(csvfile)
+                args = list()
+                for i in range(int(num)):
+                    print(f"Enter the {i + 1} column.")
+                    args.append(input(prompt))
+                    if "quit" in args:
+                        print("Have a nice day!")
+                        csvfile.close()
+                        exit(0)
+                
+                writer.writerow(args)
+        else:
+            print("NaN")
+            exit(1)
+  
+
+
+def main():
+    if len(argv) != 2:
+        print("Usage: python3 csv.py <filename>") 
+    else:
+        write(argv[1])
+    exit(0)
+
+
+main()

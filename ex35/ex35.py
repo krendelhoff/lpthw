@@ -28,6 +28,7 @@ def bear_room():
     print("The bear har a bunch of honey.")
     print("The fat bear is in front of another door.")
     print("How are you going to move the bear?")
+
     bear_moved = False
 
     while True:
@@ -35,14 +36,18 @@ def bear_room():
 
         if choice == "take honey":
             dead("The bear looks at yu then slaps you face off.")
+
         elif choice == "taunt bear" and not bear_moved: # look you do not have to use parentheses
             print("The bear has moved from the door.")
             print("You can go through it now.")
             bear_moved = True
+
         elif choice == "taunt bear" and bear_moved:
             dead("The bear gets pissed off and chews you leg off.")
+
         elif choice == "open door" and bear_moved:
             gold_room()
+
         else:
             print("I got no idea what that means.")
 
@@ -55,8 +60,10 @@ def cthulhu_room():
 
     if "flee" in choice:
         start()
+
     elif "head" in choice:
         dead("Well, that was tasty!")
+
     else:
         cthulhu_room()
 
@@ -74,15 +81,19 @@ def start():
 
     if choice == "left":
         bear_room()
+
     elif choice == "right":
         cthulhu_room()
+
     else:
         print("You stumble around the room until you starve.")
+
         for i in range(9):
             print('.', end='')
             sleep(1)
             if (i + 1) % 3 == 0:
                 print()
+
         print("You resurrected!")
         sleep(3)
         print("Oh shit. Here we go again.")
